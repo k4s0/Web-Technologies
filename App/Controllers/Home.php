@@ -20,9 +20,8 @@ class Home extends \Core\Controller
      */
     public function indexAction()
     {
-        $user = new Categories();
-        $dataArr = $user::getAll();
-        View::render('Home/index.php', array('data' => $dataArr));
+        session_start();
+        View::render('Home/index.php');
     }
 
     /**
@@ -38,7 +37,6 @@ class Home extends \Core\Controller
         }
         echo json_encode($ajax_request);
     }
-
 
 
 }

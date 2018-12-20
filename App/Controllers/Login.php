@@ -9,7 +9,6 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use Core\Model;
 use \Core\View;
 
 /**
@@ -66,9 +65,19 @@ class Login extends \Core\Controller
 
     }
 
-    protected function after()
+    /**
+     * Perform the logout action
+     * @return void
+     */
+    public function logoutAction()
     {
-        parent::after(); // TODO: Close All DB connection with uset($db)
+        // Initialize the session
+        session_start();
+        // Unset all of the session variables
+        $_SESSION = array();
+        // Destroy the session.
+        session_destroy();
+        View::render('Home/index.php');
     }
 
 }

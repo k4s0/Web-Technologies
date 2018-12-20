@@ -5,7 +5,7 @@
     <?php include '../App/Views/head.php'; ?>
 </head>
 <body>
-<?php include '../App/Views/menu.php' ?>
+<?php include '../App/Views/menu-bar.php' ?>
 <?php include '../App/Views/login-modal.php' ?>
 
 

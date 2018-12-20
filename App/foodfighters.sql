@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Creato il: Dic 15, 2018 alle 17:14
--- Versione del server: 10.1.37-MariaDB
--- Versione PHP: 7.2.12
+-- Host: localhost
+-- Generation Time: Dec 20, 2018 at 05:31 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `categories`
+-- Table structure for table `categories`
 --
 
 CREATE TABLE `categories` (
@@ -34,7 +34,7 @@ CREATE TABLE `categories` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `categories`
+-- Dumping data for table `categories`
 --
 
 INSERT INTO `categories` (`category_id`, `name`) VALUES
@@ -48,7 +48,7 @@ INSERT INTO `categories` (`category_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `client`
+-- Table structure for table `client`
 --
 
 CREATE TABLE `client` (
@@ -58,17 +58,16 @@ CREATE TABLE `client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `client`
+-- Dumping data for table `client`
 --
 
 INSERT INTO `client` (`client_id`, `address`, `birthday`) VALUES
-(3, 'via ladino,3', '1997-05-13'),
-(6, 'via castel latino,125', '1997-07-26');
+(24, 'via,ladino,3', '1997-05-13');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `coupon`
+-- Table structure for table `coupon`
 --
 
 CREATE TABLE `coupon` (
@@ -78,23 +77,16 @@ CREATE TABLE `coupon` (
   `ammount` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dump dei dati per la tabella `coupon`
---
-
-INSERT INTO `coupon` (`coupon_id`, `producer_id`, `client_id`, `ammount`) VALUES
-(1, 5, 3, 1),
-(2, 4, 6, 10);
-
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `orders`
+-- Table structure for table `orders`
 --
 
 CREATE TABLE `orders` (
   `order_id` int(3) NOT NULL,
   `client_id` int(3) NOT NULL,
+  `producer_id` int(3) NOT NULL,
   `state` int(2) NOT NULL,
   `date` date NOT NULL,
   `deliveryPlace` varchar(20) COLLATE utf8_bin NOT NULL,
@@ -102,16 +94,16 @@ CREATE TABLE `orders` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `orders`
+-- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `client_id`, `state`, `date`, `deliveryPlace`, `description`) VALUES
-(1, 3, 0, '2018-12-15', 'aula 3.7', '- panino veggy\r\n- coca-cola');
+INSERT INTO `orders` (`order_id`, `client_id`, `producer_id`, `state`, `date`, `deliveryPlace`, `description`) VALUES
+(1, 24, 5, 0, '2018-12-04', 'a fanculo', 'coca-cola');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `producer`
+-- Table structure for table `producer`
 --
 
 CREATE TABLE `producer` (
@@ -120,17 +112,18 @@ CREATE TABLE `producer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `producer`
+-- Dumping data for table `producer`
 --
 
 INSERT INTO `producer` (`ID`, `companyName`) VALUES
 (4, 'Latte Divino'),
-(5, 'El Kebab Albanese');
+(5, 'El Kebab Albanese'),
+(23, 'Azienda22ahsdhas');
 
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `products`
+-- Table structure for table `products`
 --
 
 CREATE TABLE `products` (
@@ -145,7 +138,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`producer_id`, `product_id`, `productName`, `availability`, `description`, `productPrice`, `category`, `image_path`) VALUES
@@ -156,7 +149,7 @@ INSERT INTO `products` (`producer_id`, `product_id`, `productName`, `availabilit
 (5, 2, 'coca-cola', 1, 'coca-cola albanese', 1, 1, 'img/img.png');
 
 --
--- Trigger `products`
+-- Triggers `products`
 --
 DELIMITER $$
 CREATE TRIGGER `AutoIncrementProductsID` BEFORE INSERT ON `products` FOR EACH ROW BEGIN
@@ -172,7 +165,7 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Struttura della tabella `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -186,33 +179,35 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dump dei dati per la tabella `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`ID`, `name`, `lastName`, `email`, `username`, `password`, `permission`) VALUES
-(3, 'lorenzo', 'caisni', 'lorenzo@email.it', 'caso', 'prova', 0),
 (4, 'lucy', 'zoffoli', 'lucy@email.it', 'lucy', 'prova', 1),
 (5, 'anis', 'lico', 'anis@email.it', 'anis', 'prova', 1),
-(6, 'simone', 'del gatto', 'gatto@email.it', 'miaomiao', 'prova', 0);
+(13, 'davide', 'gatto', 'maio@mail.it', 'miaomiao', '$2y$10$jjx0VTFed7pjvmaw0MXSMedyvxqlmyCdBmSvZrdoDZuEoHsoRvQqa', 0),
+(20, 'Lorenzo', 'Casini', 'porovasaasd@gmail.it', 'ciccio', '$2y$10$RH0/KTXv4EycOrlwoKjIJOMuN4F7cvTO9oxms804BaCziagyqLKX.', 1),
+(23, 'Lorenzo', 'Casini', 'porovasaasbdhsaasd@gmail.it', 'cicciohjahasddasdas', '$2y$10$WJjazwbUX2AfrKw5DWQVPua/JjznLUDo1nsy/2CQEchcVqI/jwtd.', 1),
+(24, 'Lorenzo', 'casini', 'casini@mailmail.it', 'caso', '$2y$10$O/n857GodBL6YX136noPuu6crz2U0XnPZh2zPjvmRdw8AOkpcSgoG', 0);
 
 --
--- Indici per le tabelle scaricate
+-- Indexes for dumped tables
 --
 
 --
--- Indici per le tabelle `categories`
+-- Indexes for table `categories`
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indici per le tabelle `client`
+-- Indexes for table `client`
 --
 ALTER TABLE `client`
   ADD PRIMARY KEY (`client_id`);
 
 --
--- Indici per le tabelle `coupon`
+-- Indexes for table `coupon`
 --
 ALTER TABLE `coupon`
   ADD PRIMARY KEY (`coupon_id`),
@@ -220,27 +215,28 @@ ALTER TABLE `coupon`
   ADD KEY `fk_coupon_client` (`client_id`);
 
 --
--- Indici per le tabelle `orders`
+-- Indexes for table `orders`
 --
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`order_id`),
-  ADD KEY `fk_order_client` (`client_id`);
+  ADD KEY `FK_order_client` (`client_id`),
+  ADD KEY `FK_order_producer` (`producer_id`);
 
 --
--- Indici per le tabelle `producer`
+-- Indexes for table `producer`
 --
 ALTER TABLE `producer`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indici per le tabelle `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`producer_id`,`product_id`),
   ADD KEY `fk_products_categories` (`category`);
 
 --
--- Indici per le tabelle `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`),
@@ -248,76 +244,77 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT per le tabelle scaricate
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT per la tabella `categories`
+-- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
   MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT per la tabella `client`
+-- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT per la tabella `coupon`
+-- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
   MODIFY `coupon_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT per la tabella `orders`
+-- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
   MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT per la tabella `producer`
+-- AUTO_INCREMENT for table `producer`
 --
 ALTER TABLE `producer`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT per la tabella `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- Limiti per le tabelle scaricate
+-- Constraints for dumped tables
 --
 
 --
--- Limiti per la tabella `client`
+-- Constraints for table `client`
 --
 ALTER TABLE `client`
   ADD CONSTRAINT `fk_client_user` FOREIGN KEY (`client_id`) REFERENCES `users` (`ID`);
 
 --
--- Limiti per la tabella `coupon`
+-- Constraints for table `coupon`
 --
 ALTER TABLE `coupon`
   ADD CONSTRAINT `fk_coupon_client` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
   ADD CONSTRAINT `fk_coupon_producer` FOREIGN KEY (`producer_id`) REFERENCES `producer` (`ID`);
 
 --
--- Limiti per la tabella `orders`
+-- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `fk_order_client` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`);
+  ADD CONSTRAINT `FK_order_client` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`),
+  ADD CONSTRAINT `FK_order_producer` FOREIGN KEY (`producer_id`) REFERENCES `producer` (`ID`);
 
 --
--- Limiti per la tabella `producer`
+-- Constraints for table `producer`
 --
 ALTER TABLE `producer`
   ADD CONSTRAINT `fk_producer_user` FOREIGN KEY (`ID`) REFERENCES `users` (`ID`);
 
 --
--- Limiti per la tabella `products`
+-- Constraints for table `products`
 --
 ALTER TABLE `products`
   ADD CONSTRAINT `fk_products_categories` FOREIGN KEY (`category`) REFERENCES `categories` (`category_id`),
