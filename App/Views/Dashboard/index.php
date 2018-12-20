@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>User Dashboard</title>
+    <?php include '../App/Views/head.php'; ?>
+</head>
+<body>
 <?php
 if ($code == 0) {
-    echo '
-        <h1>Welcome to your client Dashboard</h1>
-        <a href="/Home/Index">go to main page</a>
-    ';
-}else{
-    echo '
-        <h1>Welcome to your producer Dashboard</h1>
-        <a href="/Home/Index">go to main page</a>
-    ';
+    include '../App/Views/Dashboard/dashboard-client.php';
+} else {
+    include '../App/Views/Dashboard/dashboard-producer.php';
 }
+?>
+<?php include '../App/Views/footer.php'; ?>
+
+</body>
+</html>

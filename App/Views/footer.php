@@ -10,6 +10,7 @@
     </div>
     <!-- jS -->
     <script src="/Assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/Assets/js/jquery.cookie.js" type="text/javascript"></script>
     <script src="/Assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="/Assets/js/jquery.nivo.slider.js" type="text/javascript"></script>
     <script src="/Assets/js/owl.carousel.min.js" type="text/javascript"></script>
@@ -18,6 +19,7 @@
     <script src="/Assets/js/main.js" type="text/javascript"></script>
     <script src="/Assets/js/stickbar.js" type="text/javascript"></script>
     <script src="/Assets/js/ajax.js" type="text/javascript"></script>
+    <script src="/Assets/js/addChart.js" type="text/javascript"></script>
 </footer>
 
 <a id="back-top" href="#"></a>

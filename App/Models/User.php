@@ -18,15 +18,16 @@ class User extends \Core\Model
      * @param string $pwd
      * @return true/false
      */
-    public static function signin($user,$pwd)
+    public static function signin($user, $pwd)
     {
         $db = static::getDB();
         try {
-            $sql = "SELECT username,password FROM users WHERE username='$user'";
+            $sql = "SELECT ID,username,password FROM users WHERE username='$user'";
             $result = $db->query($sql);
             if ($result->rowCount() > 0) {
                 $row = $result->fetch();
-                if (password_verify($pwd,$row['password'])) {
+                $_SESSION['user_id'] = $row['ID'];
+                if (password_verify($pwd, $row['password'])) {
                     return true;
                 } else {
                     return false;
@@ -94,4 +95,44 @@ class User extends \Core\Model
         unset($db);
         return true;
     }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+    public static function showClientOrder($user_id)
+    {
+        $db = static::getDB();
+        try {
+            $sql = "SELECT order_id, date, state, description FROM orders WHERE client_id ='$user_id'";
+            $result = $db->query($sql);
+            return $result->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            unset($db);
+
+        }
+
+    }
+
+    /**
+     * @param $user_id
+     * @return mixed
+     */
+
+    public static function showProducerOrder($user_id)
+    {
+        $db = static::getDB();
+        try {
+            $sql = "SELECT order_id, date, state, description FROM orders WHERE producer_id ='$user_id'";
+            $result = $db->query($sql);
+            return $result->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+            unset($db);
+
+        }
+    }
+
+
 }
