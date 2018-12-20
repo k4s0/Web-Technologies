@@ -43,14 +43,6 @@
                     <div class="dropdown-menu dropup">
                         <span class="caret"></span>
                         <ul class="media-list">
-                            <li class="media">
-                                <img class="pull-left" src="/Assets/images/product-item.jpg" alt="">
-                                <div class="media-body">
-                                    <h6>Italian Sauce
-                                        <span>$250</span>
-                                    </h6>
-                                </div>
-                            </li>
                         </ul>
                         <a href="/Shop/checkout"><button  class="btn btn-primary btn-sm">Checkout</button></a>
                     </div>

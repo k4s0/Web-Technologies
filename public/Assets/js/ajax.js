@@ -51,13 +51,10 @@ $("#showProducerOrder").click(function () {
             $('#producer-table').html(table);
             $('th').on('click','button#producerChange',function () {
                 alert($(this).val());
+                //add change order status from prducer dashboard
             });
             $('#producer-btn-dash').show();
 
         }
     });
-});
-$("#producerChange").click(function () {
-    var btn = $(this).value;
-    alert(btn);
 });

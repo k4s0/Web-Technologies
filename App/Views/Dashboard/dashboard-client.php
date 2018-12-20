@@ -76,15 +76,11 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-xs-2">
+
+        <div align="center" id="client-table">
 
         </div>
-        <div class="col-xs-8" id="client-table">
 
-        </div>
-        <div class="col-xs-2">
-
-        </div>
 
     </div>
 

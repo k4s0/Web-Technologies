@@ -32,12 +32,10 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
                 <li class="active"><a href="/Home/Index">HOME</a></li>
-                <li><a href="/Home/Shop">USER</a></li>
-
                 <li class="dropdown">
                     <a href="#">
                         <i class="fa fa-user"></i>
-                        USER
+                        <?php echo $_SESSION['user']?>
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
@@ -78,15 +76,11 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-xs-2">
+
+        <div align="center" id="producer-table">
 
         </div>
-        <div class="col-xs-8" id="producer-table">
 
-        </div>
-        <div class="col-xs-2">
-
-        </div>
 
     </div>
 
