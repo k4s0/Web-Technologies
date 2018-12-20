@@ -4,9 +4,9 @@
 body { font-family: 'Open Sans', sans-serif; font-size: 14px; font-weight: 300; }
 li { list-style: none;}
 a:hover { text-decoration: none; }
-a:active{font-size: 100px; }
+a:active{font-size: 14px; }
 /*Headers*/
-h1,h2,h3,h4,h5,h6 { font-family: 'Staatliches', cursive, sans-serif;color: red}
+h1,h2,h3,h4,h5,h6,h7{ font-family: 'Staatliches', cursive, sans-serif;color: red}
 
 h1 { font-size: 50px; }
 h2 { font-size: 40px; }
@@ -14,6 +14,9 @@ h3 { font-size: 35px; }
 h4 { font-size: 30px; }
 h5 { font-size: 25px; }
 h6 { font-size: 20px; }
+h7 { font-size: 20px;
+	color: grey;
+}
 ul {padding-left: 0;}
 
 /*Add space between sections*/
@@ -1163,32 +1166,6 @@ footer .block span {
 	position: fixed;
 	top: 0;
 	width: 100%;
-}
-
-/*------------------------------button user---------------------------*/
-
-.btn-outline {
-	color: inherit;
-	transition: all .8s;
-	background-color:transparent;
-}
-
-.btn-primary.btn-outline {
-	color: #428bca;
-	background-color:transparent;
-}
-
-
-.btn-primary.btn-outline:hover{
-	color: #fff;
-}
-
-.btn-outline.btn-lg {
-	background-color: transparent;
-	padding-left:40px;
-	padding-right:40px;
-	padding-top:10px;
-	padding-bottom:10px;
 }
 
 /****** used for the checkout table  ***********/
