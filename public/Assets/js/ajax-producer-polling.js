@@ -59,7 +59,7 @@ setInterval(function () {
             var json = $.parseJSON(msg);
             var table = '<table class ="table table-hover" >' +
                 '<thead>' +
-                '<th>MakeOrder Id</th><th>Data</th><th>Descrizione</th><th>Azioni</th> </thead><tbody>';
+                '<th>Order Id</th><th>Data</th><th>Descrizione</th><th>Azioni</th> </thead><tbody>';
 
             for (var i = 0; i < json.length; ++i) {
                 var status = json[i].state;

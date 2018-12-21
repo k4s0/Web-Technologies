@@ -27,10 +27,19 @@ class Shop extends \Core\Controller
      */
     public function indexAction()
     {   session_start();
+        if(isset($_SESSION['permission'])){
+            if($_SESSION['permission']!=0){
+                die("sei fornitore");
+            }else{
+                $products = new Products();
+                $dataArr = $products::getAll();
+                View::render('Shop/index.php', array('data' => $dataArr));
+            }
 
-        $products = new Products();
-        $dataArr = $products::getAll();
-        View::render('Shop/index.php', array('data' => $dataArr));
+        }else{
+            //create deny.php with the login/registration form.
+            die("loggati");
+        }
     }
 
     /**

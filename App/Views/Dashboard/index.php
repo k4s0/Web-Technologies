@@ -13,6 +13,6 @@ if ($code == 0) {
 }
 ?>
 <?php include '../App/Views/footer.php'; ?>
-
+<script src="/Assets/js/ajax.js"></script>
 </body>
 </html>

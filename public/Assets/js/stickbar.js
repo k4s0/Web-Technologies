@@ -1,4 +1,4 @@
-$(function(){
+(function(){
     var yourNavigation = $(".navbar");
     stickyDiv = "sticky";
     yourHeader = $("header").height();

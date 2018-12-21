@@ -22,7 +22,7 @@ class Dashboard extends \Core\Controller
     {
         session_start();
         if (isset($_SESSION['permission'])) {
-            View::render('Dashboard/index.php', array('code' => $_SESSION['permission'], 'user' => $_SESSION['user']));
+            View::render('Dashboard/index.php', array('code' => $_SESSION['permission']));
             die();
         } elseif (isset($_REQUEST['code'])) {
 

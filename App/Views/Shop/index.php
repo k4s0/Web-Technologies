@@ -7,7 +7,7 @@
 <body>
 <?php
 if(isset($_SESSION['user'])){
-    include '../App/Views/menu-bar-user.php';
+    include '../App/Views/menu-bar-client.php';
 }else{
     include '../App/Views/menu-bar.php';
     include '../App/Views/login-modal.php';
@@ -27,7 +27,7 @@ if(isset($_SESSION['user'])){
                 echo '
             <div class="col-md-3">
                 <div class="products">
-                    <img src="../Assets/images/product-image-4.jpg" alt="'.$row['description'].'">
+                    <img src="../Assets/images/prodotti/insalata.jpg" alt="'.$row['description'].'">
                     <h4>' .$row['productName'] . '</h4>
                     <h7>' .$row['companyName'] . '</h7>
                     <p class="price">' . $row['productPrice'] . '€</p>
@@ -46,6 +46,7 @@ if(isset($_SESSION['user'])){
 
 
 <?php include '../App/Views/footer.php'; ?>
+<script src="/Assets/js/addChart.js"></script>
 
 </body>
 </html>
