@@ -8,6 +8,8 @@
 namespace App\Controllers;
 
 use \App\Models\Products;
+use \App\Models\Coupon;
+use \App\Models\Total;
 use \Core\View;
 
 /**
@@ -38,8 +40,11 @@ class Shop extends \Core\Controller
     public function checkoutAction()
     {
         session_start();
+
+        $coupon = new Coupon();
+        $dataArr = $coupon::getAll();
         if(isset($_SESSION['products'])){
-            View::render('Shop/checkout.php', array('products' => $_SESSION['products']));
+            View::render('Shop/checkout.php', array('products' => $_SESSION['products'], 'coupon' => $dataArr));
         } else {
             View::render('Dashboard/Deny');
         }
@@ -52,7 +57,6 @@ class Shop extends \Core\Controller
      */
     public function updateCartAction(){
         session_start();
-        $products = 'nothing';
         if (isset($_POST['products'])) {
             $products= $_POST['products'];
             $_SESSION['products'] = $products;
@@ -64,7 +68,7 @@ class Shop extends \Core\Controller
     /**
      * if session is started return the current chart
      */
-    public function requestChart(){
+    public function requestChartAction(){
         session_start();
         if(isset($_SESSION['products'])){
             echo json_encode($_SESSION['products']);
@@ -72,5 +76,46 @@ class Shop extends \Core\Controller
 
     }
 
+    /**
+     * update coupon that client want use
+     */
+    public function addCouponAction(){
+        session_start();
+        if (isset($_POST['coupon_id']) && isset($_POST['producer_id']) && isset($_POST['client_id']) &&
+                isset($_POST['ammount']) && isset($_POST['companyName'])) {
 
+            $array = ['producer_id' => $_POST['producer_id'],
+                'client_id' => $_POST['client_id'],
+                'ammount' => $_POST['ammount'],
+                'companyName' => $_POST['companyName']];
+
+            $_SESSION['coupons'][$_POST['coupon_id']] = $array;
+            echo json_encode($_SESSION['coupons']);
+        }
+
+    }
+
+    /**
+     * delete a coupon saved
+     */
+    public function deleteCouponAction(){
+        session_start();
+
+        if(isset($_POST['toDelete'])){
+            unset($_SESSION['coupons'][$_POST['toDelete']]);
+            echo json_encode($_SESSION['coupons']);
+        }
+    }
+
+    /**
+     * return the total
+     */
+    public function getTotalAction(){
+        if(isset($_POST['msg'])){
+            $t = new Total();
+            $total = $t::getTotal();
+            echo json_encode($total);
+        }
+
+    }
 }
