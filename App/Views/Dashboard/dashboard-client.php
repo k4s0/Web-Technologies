@@ -1,7 +1,7 @@
 <!-- LOGO Start
     ================================================== -->
 
-<header>
+    <header>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -67,9 +67,9 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <button href="#" style="margin-bottom: 100px; margin-top: 10%; width:100%" class="btn btn-primary btn-lg">
+            <a href="/Dashboard/modifyDataUser" style="margin-bottom: 100px; margin-top: 10%; width:100%" class="btn btn-primary btn-lg" type="button">
                 Modifica Dati
-            </button>
+            </a>
         </div>
         <div class="col-xs-2"></div>
     </div>

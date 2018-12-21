@@ -37,8 +37,7 @@ class Shop extends \Core\Controller
             }
 
         }else{
-            //create deny.php with the login/registration form.
-            die("loggati");
+            View::render('Shop/signin.php');
         }
     }
 

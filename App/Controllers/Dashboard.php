@@ -83,5 +83,40 @@ class Dashboard extends \Core\Controller
         }
         echo json_encode($ajax_request);
     }
+      /**
+     *
+     */
+    public function modifyDataUserAction(){
+        session_start();
+        $dataUser = User::getDataUser($_SESSION['user_id'], $_SESSION['permission']);
+
+        View::render("/Dashboard/modifyData.php", array('type'=> $_SESSION['permission'], 'data'=>$dataUser));
+    }
+
+    public function modifyAction(){
+        session_start();
+        $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_NUMBER_INT);
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+        $lastname = filter_input(INPUT_POST, 'lastname', FILTER_SANITIZE_STRING);
+        $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+        $companyname = filter_input(INPUT_POST, 'companyname', FILTER_SANITIZE_STRING);
+        $pwd = $_POST['pwd'];
+        $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_STRING);
+        if ($code == 0) {
+            $stmt = User::modifyClient($_SESSION['user_id'], $name, $lastname, $username, $pwd, $address);
+            if ($stmt) {
+                View::render('Dashboard/index.php', array('code' => $code));
+            }
+        } else {
+            $stmt = User::modifyProducer($name, $lastname, $companyname, $username, $pwd, $_SESSION['user_id']);
+            if ($stmt) {
+                View::render('Dashboard/index.php', array('code' => $code));
+            }
+        }
+    }
+
+    /**
+     *
+     */
 
 }

@@ -26,10 +26,28 @@ if (isset($_SESSION['user'])) {
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div id="slider" class="nivoSlider">
-                    <img src="/Assets/images/slider.jpg" alt=""/>
-                    <img src="/Assets/images/slider1.jpg" alt=""/>
-                    <img src="/Assets/images/slider2.jpg" alt=""/>
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="/Assets/images/slider.jpg" alt="cibo 3">
+                        </div>
+
+                        <div class="item">
+                            <img src="/Assets/images/slider1.jpg" alt="cibo 2">
+                        </div>
+
+                        <div class="item">
+                            <img src="/Assets/images/slider2.jpg" alt="cibo">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -88,7 +106,7 @@ if (isset($_SESSION['user'])) {
 <!-- CATAGORIE Start
     ================================================== -->
 
-<section id="catagorie">
+<section style="padding-bottom: 200px" id="catagorie">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
