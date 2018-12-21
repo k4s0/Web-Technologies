@@ -72,5 +72,16 @@ class Dashboard extends \Core\Controller
         echo json_encode($ajax_request);
     }
 
+    /**
+     * Increment the status order, when producer click on his dashboard button
+     */
+    public function changeOrderStatusAction(){
+        $ajax_request = "nothing";
+        if (isset($_POST['msg'])) {
+            $order_id = $_POST['msg'];
+            $ajax_request = User::changeOrderStatus($order_id);
+        }
+        echo json_encode($ajax_request);
+    }
 
 }

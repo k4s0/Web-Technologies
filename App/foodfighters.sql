@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2018 at 05:31 PM
+-- Generation Time: Dec 21, 2018 at 02:46 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -62,7 +62,7 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`client_id`, `address`, `birthday`) VALUES
-(24, 'via,ladino,3', '1997-05-13');
+(1, 'cliente,1', '2018-12-03');
 
 -- --------------------------------------------------------
 
@@ -98,7 +98,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `client_id`, `producer_id`, `state`, `date`, `deliveryPlace`, `description`) VALUES
-(1, 24, 5, 0, '2018-12-04', 'a fanculo', 'coca-cola');
+(1, 1, 2, 2, '2018-12-21', 'a casa tua', 'product: coca-cola qnt: 1<br/> product: Torta della Nonna qnt: 1<br/> '),
+(2, 1, 3, 0, '2018-12-21', 'a casa tua', 'product: Birra Albanese qnt: 1<br/> product: Panino Albanese qnt: 1<br/> ');
 
 -- --------------------------------------------------------
 
@@ -116,9 +117,8 @@ CREATE TABLE `producer` (
 --
 
 INSERT INTO `producer` (`ID`, `companyName`) VALUES
-(4, 'Latte Divino'),
-(5, 'El Kebab Albanese'),
-(23, 'Azienda22ahsdhas');
+(2, 'Latte Divino'),
+(3, 'El kebab albanese');
 
 -- --------------------------------------------------------
 
@@ -142,11 +142,10 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`producer_id`, `product_id`, `productName`, `availability`, `description`, `productPrice`, `category`, `image_path`) VALUES
-(4, 0, 'Paino Veggy', 1, 'panino per gnagna', 5, 5, 'img/img.png'),
-(4, 1, 'Coca-Cola', 1, 'bibita', 2, 1, 'img/img.png'),
-(4, 2, 'Fanta', 1, 'fanta', 2, 1, 'img/img.png'),
-(5, 1, 'El Kebab', 1, 'panino kebab', 7, 5, 'img/img.png'),
-(5, 2, 'coca-cola', 1, 'coca-cola albanese', 1, 1, 'img/img.png');
+(2, 1, 'coca-cola', 1, 'coca-cola merdosa', 2, 1, '/Assets/images/product-image.jpg'),
+(2, 2, 'Torta della Nonna', 1, 'torta della nonna', 5, 4, '/Assets/images/product-image.jpg'),
+(3, 1, 'Birra Albanese', 1, 'birra albanese molto alcolica', 25, 1, '/Assets/images/product-image.jpg'),
+(3, 2, 'Panino Albanese', 1, 'panino con droga', 15, 5, '/Assets/images/product-image.jpg');
 
 --
 -- Triggers `products`
@@ -183,12 +182,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `name`, `lastName`, `email`, `username`, `password`, `permission`) VALUES
-(4, 'lucy', 'zoffoli', 'lucy@email.it', 'lucy', 'prova', 1),
-(5, 'anis', 'lico', 'anis@email.it', 'anis', 'prova', 1),
-(13, 'davide', 'gatto', 'maio@mail.it', 'miaomiao', '$2y$10$jjx0VTFed7pjvmaw0MXSMedyvxqlmyCdBmSvZrdoDZuEoHsoRvQqa', 0),
-(20, 'Lorenzo', 'Casini', 'porovasaasd@gmail.it', 'ciccio', '$2y$10$RH0/KTXv4EycOrlwoKjIJOMuN4F7cvTO9oxms804BaCziagyqLKX.', 1),
-(23, 'Lorenzo', 'Casini', 'porovasaasbdhsaasd@gmail.it', 'cicciohjahasddasdas', '$2y$10$WJjazwbUX2AfrKw5DWQVPua/JjznLUDo1nsy/2CQEchcVqI/jwtd.', 1),
-(24, 'Lorenzo', 'casini', 'casini@mailmail.it', 'caso', '$2y$10$O/n857GodBL6YX136noPuu6crz2U0XnPZh2zPjvmRdw8AOkpcSgoG', 0);
+(1, 'Cliente', 'Cliente', 'cliente@mail.it', 'cliente', '$2y$10$/UZN.Pbb5Cl5qnKi4LTJ7.BmxZx5BAGtS/2BKjSnUxGip/KdcnvOO', 0),
+(2, 'fornitore', 'fornitore', 'fornitore@mail.it', 'fornitore', '$2y$10$.XaV1zRB9pzKj050DCcUPe3nwDHg7H2QbZZFlo0qlWQcAmz7jSk2u', 1),
+(3, 'fornitore2', 'fornitore2', 'fornitore2@mail.it', 'fornitore2', '$2y$10$2N6AMTEY4aJmgWoqzU8W0upou52R5mGk5nKmoGPNTlwGy3.N6xpgi', 1);
 
 --
 -- Indexes for dumped tables
@@ -257,31 +253,31 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `coupon_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `coupon_id` int(3) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `producer`
 --
 ALTER TABLE `producer`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

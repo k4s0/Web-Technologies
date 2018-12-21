@@ -110,7 +110,7 @@ class User extends \Core\Model
 
         } catch (PDOException $e) {
             unset($db);
-
+            die("Error: Could not able to execute $sql" . $e->getMessage());
         }
 
     }
@@ -127,11 +127,28 @@ class User extends \Core\Model
             $sql = "SELECT order_id, date, state, description FROM orders WHERE producer_id ='$user_id'";
             $result = $db->query($sql);
             return $result->fetchAll(PDO::FETCH_ASSOC);
-
         } catch (PDOException $e) {
             unset($db);
-
+            die("Error: Could not able to execute $sql" . $e->getMessage());
         }
+    }
+
+    /**
+     * @param $order_id
+     * @return bool
+     */
+    public static function changeOrderStatus($order_id)
+    {
+        $db = static::getDB();
+        try {
+            $sql = "UPDATE orders SET state=state+1 WHERE order_id='$order_id'";
+            $db->exec($sql);
+        } catch (PDOException $e) {
+            unset($db);
+            die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+        }
+        unset($db);
+        return true;
     }
 
 

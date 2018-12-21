@@ -15,7 +15,7 @@ $(function () {
             var parent = $(ev.target).parent();
             var src = parent.find("img").attr("src");
             var name = parent.find("h4").text();
-            var price = parent.find("p").text();
+            var price = parent.find("p").text().replace('€','');
             var producer = parent.find("#producer_id").attr("value");
             var product_id = parent.find("#product_id").attr("value")
             var companyName = parent.find("h7").text();
@@ -24,6 +24,7 @@ $(function () {
             products.forEach(function (p) {
                 if (p[0] === name && p[1] === producer) {
                     p[2] = p[2] + 1;
+                    console.log(p[2]);
                     match = true;
                 }
             });
@@ -36,11 +37,6 @@ $(function () {
         updateChart();
     });
 
-
-    /*$("#checkoutButton").click(function () {
-
-    });*/
-
     function updateChart() {
         var children = $(".media-list").children();
         children.each(function () {
@@ -50,7 +46,7 @@ $(function () {
 
             var newElem = '<li class="media"><img class="pull-left" src="' + p[4] +
                 '" alt=""><div class="media-body"><h6 class="name">' + p[0] +
-                '</h6><h6><span>' + p[3] + '</span> <span  class = "chartPrize">' + p[2] + '</span><h6><a> <i class="fas fa-trash-alt"></i></a></div></li>'
+                '</h6><h6><span>' + p[3] + '</span> <span  class = "badge">' + p[2] + '</span><h6><a> <i class="fas fa-trash-alt"></i></a></div></li>'
             $(".media-list").append(newElem);
         });
 
@@ -87,6 +83,9 @@ $(function () {
             dataType: 'json',
             success: function(array){
                 products = array;
+                products.forEach(function (p) {
+                    p[2] = parseInt(p[2]);
+                })
                 updateChart();
             }
         });
