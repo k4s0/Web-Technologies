@@ -15,11 +15,11 @@
         <div class="col-md-2"></div>
         <div align="center" class="col-md-8">
             <?php
-                if($code==0){
-                    echo "<h2>CLIENTE REGISTRATO CORRETTAMENTE</h2>";
-                } else {
-                    echo "<h2>PRODUTTORE REGISTRATO CORRETTAMENTE</h2>";
-                }
+            if($code == 0){
+                echo "<h2>CLIENTE NON REGISTRATO: USERNAME O EMAIL GIA' PRESENTE</h2>";
+            } else {
+                echo "<h2>PRODUTTORE NON REGISTRATO: USERNAME O EMAIL GIA' PRESENTE</h2>";
+            }
             ?>
         </div>
         <div class="col-md-2"></div>

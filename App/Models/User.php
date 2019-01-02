@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use PDO;
+use PDOException;
 
 /**
  * Example user model
@@ -28,12 +29,12 @@ class User extends \Core\Model
                 $row = $result->fetch();
                 $_SESSION['user_id'] = $row['ID'];
                 if (password_verify($pwd, $row['password'])) {
-                    return true;
+                    return 0;
                 } else {
-                    return false;
+                    return 1;
                 }
             } else {
-                die("No records matching your query were found.");
+                return 2;
             }
         } catch (PDOException $e) {
             die("ERROR: Could not able to execute $sql. " . $e->getMessage());
@@ -63,9 +64,9 @@ class User extends \Core\Model
             $db->exec($sql);
         } catch (PDOException $e) {
             unset($db);
-            die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+            return 1;
         }
-        return true;
+        return 0;
     }
 
     /**
@@ -90,10 +91,10 @@ class User extends \Core\Model
             $db->exec($sql);
         } catch (PDOException $e) {
             unset($db);
-            die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+            return 1;
         }
         unset($db);
-        return true;
+        return 0;
     }
 
     /**

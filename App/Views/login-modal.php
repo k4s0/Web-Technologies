@@ -109,3 +109,46 @@
         </div>
     </div>
 </div>
+
+<!-- MODAL Admin
+    	================================================== -->
+
+<div class="modal fade" id="ModalAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Accedi come Amministratore</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form action="/Dashboard/index" method="post">
+                                <input type="hidden" name="code" value="2">
+                                <div class="form-group">
+                                    <label class="login-label" for="username">Username:</label>
+                                    <input type="text" name="username" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="login-label" for="pwd">Password:</label>
+                                    <input type="password" name="pwd" class="form-control" required>
+                                </div>
+                                <p class="lost_password">
+                                    <a href="#popab-password-reset" class="popab-password-link">Password
+                                        dimenticata?</a>
+                                </p>
+                                <button type="submit" class="btn btn-default">Login</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Chiudi</button>
+            </div>
+        </div>
+    </div>
+</div>

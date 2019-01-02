@@ -5,7 +5,7 @@
     <?php include '../App/Views/head.php'; ?>
 </head>
 <body>
-<?php include '../App/Views/menu-bar-client.php' ?>
+<?php include '../App/Views/menu-bar-client-home.php' ?>
 
 
 <div class="container">
@@ -53,7 +53,7 @@
         }
         array_unique($producers);
         foreach ($coupon as $c){
-            if(in_array($c['producer_id'], $producers)){
+            if(in_array($c['producer_id'], $producers) && $c['client_id'] == $client_id){
                 echo
                     '<div class="row">
                     <div class="col-xs-2"></div>
@@ -74,10 +74,34 @@
         ?>
 
     <div class="row">
+        <div class="col-md-2" style="padding-bottom: 100px">
+            <select id="placeSelectMenu"  class="form-control">
+                <?php
+                echo '<option selected>'.'Ingresso'.'</option>';
+                foreach ($places as $p)
+                {
+                    if($p['place_id'] !== "Ingresso")
+                        echo '<option value="' . $p['place_id'] . '">' . $p['place_id'] . '</option>';
+                }
+                ?>
+            </select>
+        </div>
+        <div class="col-md-8">
+
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+
+
+    <div class="row">
         <div class="col-xs-2"></div>
-        <div class="col-xs-8"></div>
+        <div class="col-xs-8" align="center" style="padding-bottom: 200px">
+            <a href="/Dashboard/index"><button  type="button" id="completeOrder" class="btn btn-primary">Completa l'ordine</button></a>
+        </div>
         <div class="col-xs-2">
-            <button type="button" id="completeOrder" class="btn btn-primary">Completa l'ordine</button>
+
         </div>
     </div>
 </div>
@@ -85,7 +109,11 @@
 
 
 
-
+<?php
+if(isset($_SESSION['coupons'])){
+    $_SESSION['coupons'] = [];
+}
+?>
 <?php include '../App/Views/footer.php'; ?>
 <script src="/Assets/js/checkbox.js" type="text/javascript"></script>
 <script src="/Assets/js/makeOrder.js" type="text/javascript"></script>

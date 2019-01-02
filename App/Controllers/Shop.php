@@ -10,6 +10,7 @@ namespace App\Controllers;
 use \App\Models\Products;
 use \App\Models\Coupon;
 use \App\Models\Total;
+use \App\Models\Places;
 use \Core\View;
 
 /**
@@ -51,8 +52,10 @@ class Shop extends \Core\Controller
 
         $coupon = new Coupon();
         $dataArr = $coupon::getAll();
-        if(isset($_SESSION['products'])){
-            View::render('Shop/checkout.php', array('products' => $_SESSION['products'], 'coupon' => $dataArr));
+        $places = Places::getAll();
+        if(isset($_SESSION['products']) && (!empty($_SESSION['products']))){
+            View::render('Shop/checkout.php', array('products' => $_SESSION['products'], 'coupon' => $dataArr,
+                'places' => $places, 'client_id' => $_SESSION['user_id']));
         } else {
             View::render('Dashboard/Deny');
         }
@@ -69,6 +72,8 @@ class Shop extends \Core\Controller
             $products= $_POST['products'];
             $_SESSION['products'] = $products;
             echo json_encode($_SESSION['products']);
+        } else if(isset($_POST['deleteAll'])){
+            $_SESSION['products'] = [];
         }
 
     }

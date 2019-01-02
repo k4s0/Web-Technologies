@@ -10,7 +10,7 @@ if (isset($_SESSION['user'])) {
     if($_SESSION['permission']!=0){
         include '../App/Views/menu-bar-producer.php';
     }else{
-        include '../App/Views/menu-bar-client.php';
+        include '../App/Views/menu-bar-client-home.php';
     }
 
 } else {

@@ -10,6 +10,7 @@ $(function () {
         firstExecution = false;
      }
 
+
     $(".view-link").click(function (ev) {
         if ($(event.target).attr("class") === "view-link shutter") {
             var parent = $(ev.target).parent();
@@ -65,18 +66,32 @@ $(function () {
     }
 
     function chartChanged(){
-        $.ajax({
-            type: 'POST',
-            data: {products: products},
-            url: '/Shop/updateCart',
-            dataType: 'json',
-            success: function(msg){
-            }
-        });
+        if(products.length > 0){
+            $.ajax({
+                type: 'POST',
+                data: {products: products},
+                url: '/Shop/updateCart',
+                dataType: 'json',
+                success: function(msg){
+                    console.log(msg);
+                }
+            });
+        } else {
+            $.ajax({
+                type: 'POST',
+                data: {deleteAll: 0},
+                url: '/Shop/updateCart',
+                dataType: 'json',
+                success: function(msg){
+                    console.log(msg);
+                }
+            });
+        }
+
+
     }
 
     function recoverChart(){
-        console.log("First Execution");
         $.ajax({
             type: 'POST',
             url: '/Shop/requestChart',

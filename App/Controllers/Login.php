@@ -9,6 +9,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Controllers\Dashboard;
 use \Core\View;
 
 /**
@@ -37,7 +38,6 @@ class Login extends \Core\Controller
     /**
      * Receive new user data with an ajax request.
      *
-     * @return void
      */
     public function signupAction()
     {
@@ -53,13 +53,17 @@ class Login extends \Core\Controller
 
         if ($code == 0) {
             $stmt = User::insertClient($name, $lastname, $username, $email, $pwd, $address, $birth, $code);
-            if ($stmt) {
+            if ($stmt == 0) {
                 View::render('Login/succes.php', array('code' => $code));
+            } else {
+                View::render('Login/unsuccess.php', array('code' => $code));
             }
         } else {
             $stmt = User::insertProducer($name, $lastname, $companyname, $username, $email, $pwd, $code);
-            if ($stmt) {
+            if ($stmt == 0) {
                 View::render('Login/succes.php', array('code' => $code));
+            } else {
+                View::render('Login/unsuccess.php', array('code' => $code));
             }
         }
 

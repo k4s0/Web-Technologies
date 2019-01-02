@@ -1,18 +1,3 @@
-<!-- LOGO Start
-    ================================================== -->
-
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="#">
-                    <img class="logo" src="/Assets/images/logo.jpg" alt="logo">
-                </a>
-            </div>
-        </div>
-    </div>
-</header>
-
 
 <!-- MENU Start
 ================================================== -->
@@ -31,7 +16,6 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
-                <li class="active"><a href="/Home/Index">HOME</a></li>
                 <li class="dropdown">
                     <a href="#">
                         <i class="fa fa-user"></i>
@@ -50,70 +34,57 @@
         </div>
     </div>
 </nav>
-
-<!-- BUTTONS start
-=================================================-->
-
-<div class="container" id="bt-producer">
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-            <button id="showProducerOrder" class="btn btn-primary btn-lg">
-                Visualizza Ordini
-            </button>
-        </div>
-        <div class="col-xs-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-            <a href="/Dashboard/modifyDataUser" class="btn btn-primary btn-lg" type="button">
-                Modifica Dati
-            </a>
-        </div>
-        <div class="col-xs-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-            <a href="/Dashboard/showProduct" class="btn btn-primary btn-lg" type="button">
-                Aggiungi Prodotto
-            </a>
-        </div>
-        <div class="col-xs-2"></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-2"></div>
-        <div class="col-xs-8">
-            <a href="/Dashboard/releaseCoupon" class="btn btn-primary btn-lg" type="button">
-                Rilascia Coupon
-            </a>
-        </div>
-        <div class="col-xs-2"></div>
-    </div>
-</div>
 <div class="container">
     <div class="row">
-
-        <div align="center" id="producer-table">
-
+        <div class="col-md-2"></div>
+        <div align="center" class="col-md-8">
+            <h2>CATEGORIE PRODOTTI</h2>
         </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <table id="categoryTable" class="table table-hover" id="tableCheckout">
+                <thead>
+                <tr>
+                    <th>Categoria</th>
+                    <th>Elimina</th>
+                </tr>
+                </thead>
+                <tbody id="table">
 
-
+                <?php
+                if(isset($categories)){
+                    foreach ($categories as $c) {
+                        echo '
+                <tr>
+                    <td>'.$c['name'].'</td>
+                    <td><button type="button" class="btn btn-danger deleteCategory">Elimina</button>
+                    <input type="hidden" class="category_id" value=" '.$c['category_id'].'"></td>
+                </tr>';
+                    }
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="cat_name_input"/>
+        </div>
+        <div class="col-xs-2"></div>
     </div>
 
     <div class="row">
-        <div class="col-xs-2">
-
+        <div class="col-xs-2"></div>
+        <div class="align-items-center col-xs-8">
+            <td><button type="button" class="btn btn-success" id="addCategory">Aggiungi Categoria</button>
         </div>
-        <div align="center" class="col-xs-8">
-            <a class="btn btn-primary btn-lg" id="producer-btn-dash" href="/Dashboard/index" style="display: none;">Torna
-                alla dashboard</a>
-        </div>
-        <div class="col-xs-2">
-
-        </div>
-
+        <div class="col-xs-2"></div>
     </div>
 
 </div>

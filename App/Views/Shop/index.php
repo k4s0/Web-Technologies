@@ -27,7 +27,7 @@ if(isset($_SESSION['user'])){
                 echo '
             <div class="col-md-3">
                 <div class="products">
-                    <img src="../Assets/images/prodotti/insalata.jpg" alt="'.$row['description'].'">
+                    <img class="product_image" src="..'. $row['image_path'].'" alt="'.$row['description'].'">
                     <h4>' .$row['productName'] . '</h4>
                     <h7>' .$row['companyName'] . '</h7>
                     <p class="price">' . $row['productPrice'] . '€</p>

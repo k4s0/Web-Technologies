@@ -1,8 +1,5 @@
 $(function () {
-
     writeTotal();
-
-
     $(".coupon").click(function(ev) {
         var ckb = $(ev.target).is(':checked');
         if (ckb) {

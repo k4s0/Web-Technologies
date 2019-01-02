@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \App\Models\MakeOrder;
 
+
 /**
  * Order controller
  */
@@ -16,8 +17,7 @@ class Order extends \Core\Controller
     public function makeOrderAction()
     {
         session_start();
-        $msg = MakeOrder::insertOrder();
-
-        echo json_encode($msg);
+        $msg = MakeOrder::insertOrder($_POST['selectedPlace']);
+        json_encode(msg);
     }
 }
