@@ -15,7 +15,10 @@ $(function () {
             url: '/CouponManager/releaseCoupons',
             dataType: 'json',
             success: function(msg){
-                console.log(msg);
+                elem = '<div class="alert alert-success alert-dismissible">'+
+                        ' <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>'+
+                        ' <strong>Coupon inserito con successo!</strong>  </div>';
+                $("#alerts").append(elem);
             }
         });
     })

@@ -60,6 +60,21 @@ $(function () {
                     '</tr>'
                 $("#total").remove();
                 $("#tableCheckout").append(newElem);
+                var newElem1='<div class="row" id="totalListProduct">'+
+                    '<div class="col-xs-2"></div>'+
+                    '<div class="col-xs-8">' +
+                    '<div class="card">'+
+                    '<div class="card-body">'+
+                    '<ul class="list-group list-group-flush">'+
+                        '<li class="list-group-item"><span class="productInfo">Totale: </span>'+total+'€</li>'+
+                    '</ul>'+
+                    '</div>'+
+                     '</div>'+
+                    '</div>'+
+                    '<div class="col-xs-2"></div>'+
+                    '</div>';
+                $("#totalListProduct").remove();
+                $("#listProduct").append(newElem1);
             }
 
         });

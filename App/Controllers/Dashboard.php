@@ -7,6 +7,8 @@ use App\Models\Upload;
 use App\Models\User;
 use \Core\View;
 use \App\Models\Categories;
+use \App\Models\Places;
+
 /**
  * Dashboard controller
  *
@@ -24,34 +26,40 @@ class Dashboard extends \Core\Controller
         session_start();
         if (isset($_SESSION['permission'])) {
             $categories = Categories::getAll();
-            View::render('Dashboard/index.php', array('code' => $_SESSION['permission'], 'categories' => $categories));
+            $places = Places::getAll();
+            View::render('Dashboard/index.php', array('code' => $_SESSION['permission'], 'categories' => $categories, 'places' => $places));
             die();
         } elseif (isset($_REQUEST['code'])) {
 
-            $code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_NUMBER_INT);
+            //$code = filter_input(INPUT_POST, 'code', FILTER_SANITIZE_NUMBER_INT);
             $user = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
             $pwd = $_POST['pwd'];
             $returnValue = User::signin($user, $pwd);
-            if ($returnValue == 0) {
-                if ($code == 0) {
+            switch ($returnValue) {
+                case 0:
                     $_SESSION['permission'] = 0;
                     $_SESSION['user'] = $user;
-                    View::render('Dashboard/index.php', array('code' => $code));
-                } elseif($code == 1) {
+                    View::render('Dashboard/index.php', array('code' => $returnValue));
+                    break;
+                case 1:
                     $_SESSION['permission'] = 1;
                     $_SESSION['user'] = $user;
-                    View::render('Dashboard/index.php', array('code' => $code));
-                } else {
+                    View::render('Dashboard/index.php', array('code' => $returnValue));
+                    break;
+                case 2:
                     $_SESSION['permission'] = 2;
                     $_SESSION['user'] = $user;
 
+                    $places = Places::getAll();
                     $categories = Categories::getAll();
-                    View::render('Dashboard/index.php', array('code' => $code, 'categories' => $categories));
-                }
+                    View::render('Dashboard/index.php', array('code' => $returnValue, 'categories' => $categories, 'places' => $places));
+                    break;
 
-            } else {
-                View::render('Dashboard/error-login.php', array('errorCode' => $returnValue));
+                default:
+                    View::render('Dashboard/error-login.php', array('errorCode' => $returnValue));
+                    break;
             }
+
 
         } else {
             echo 'Accesso Negato';
@@ -132,7 +140,8 @@ class Dashboard extends \Core\Controller
     {
         session_start();
         $array = Products::getProducerProduct($_SESSION['user_id']);
-        View::render('Dashboard/addProduct.php', array('product' => $array));
+        $category = Categories::getAll();
+        View::render('Dashboard/addProduct.php', array('product' => $array, 'category' => $category));
     }
 
     public function deleteProductAction()
@@ -148,8 +157,10 @@ class Dashboard extends \Core\Controller
         session_start();
         $productName = filter_input(INPUT_POST, 'productName', FILTER_SANITIZE_STRING);
         $productDesc = filter_input(INPUT_POST, 'productDesc', FILTER_SANITIZE_STRING);
-        $productPrice = filter_input(INPUT_POST, 'productPrice', FILTER_SANITIZE_NUMBER_FLOAT);
-        $category = 1;
+        //$productPrice = filter_input(INPUT_POST, 'productPrice', FILTER_SANITIZE_NUMBER_FLOAT);
+        $productPrice = $_POST['productPrice'];
+        $category = explode(" ", $_POST['category']);
+        $category = $category[0];
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Check if file was uploaded without errors
@@ -170,33 +181,55 @@ class Dashboard extends \Core\Controller
 
                 // Verify MYME type of the file
                 Upload::uploadImage($filetype, $allowed, $filename, $_SESSION['user_id'], $fileTmp, $productName, $productDesc, $productPrice, $category);
-
             } else {
-                echo "Errore: " . $_FILES["photo"]["error"];
+                //echo "Errore: " . $_FILES["photo"]["error"];
             }
 
         }
-        echo json_encode(true);
+        /*$array = Products::getProducerProduct($_SESSION['user_id']);
+        $category=Categories::getAll();
+        View::render('Dashboard/addProduct.php', array('product' => $array, 'category' => $category));*/
+        View::render('Dashboard/correct-insert-product.php');
     }
 
-    public function releaseCouponAction(){
+    public function releaseCouponAction()
+    {
         session_start();
         View::render('Dashboard/releaseCoupon.php');
     }
 
-    public function deleteCategoryAction(){
+    public function deleteCategoryAction()
+    {
         $ajax = "problems";
-        if(isset($_POST['toDelete']))
-        {
+        if (isset($_POST['toDelete'])) {
             $ajax = Categories::deleteCategory($_POST['toDelete']);
         }
         echo json_encode($ajax);
     }
 
-    public function addCategoryAction(){
+    public function deletePlaceAction()
+    {
         $ajax = "problems";
-        if(isset($_POST["toAdd"])){
+        if (isset($_POST['toDelete'])) {
+            $ajax = Places::deletePlace($_POST['toDelete']);
+        }
+        echo json_encode($ajax);
+    }
+
+    public function addCategoryAction()
+    {
+        $ajax = "problems";
+        if (isset($_POST["toAdd"])) {
             $ajax = Categories::addCategory($_POST['toAdd']);
+        }
+        echo json_encode($ajax);
+    }
+
+    public function addPlaceAction()
+    {
+        $ajax = "problems";
+        if (isset($_POST["toAdd"])) {
+            $ajax = Places::addPlace($_POST['toAdd']);
         }
         echo json_encode($ajax);
     }

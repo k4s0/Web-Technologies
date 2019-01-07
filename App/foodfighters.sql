@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Dic 22, 2018 alle 08:22
+-- Creato il: Gen 07, 2019 alle 20:20
 -- Versione del server: 10.1.37-MariaDB
 -- Versione PHP: 7.3.0
 
@@ -39,11 +39,8 @@ CREATE TABLE `categories` (
 
 INSERT INTO `categories` (`category_id`, `name`) VALUES
 (1, 'bibite'),
-(2, 'primi'),
-(3, 'secondi'),
 (4, 'dessert'),
-(5, 'panini'),
-(6, 'pizze');
+(5, 'panini');
 
 -- --------------------------------------------------------
 
@@ -62,7 +59,9 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`client_id`, `address`, `birthday`) VALUES
-(1, 'cliente,1', '2018-12-03');
+(30, 'VIA GIORGIO REGNOLI 12', '1994-04-12'),
+(34, 'Castel Latino 155', '1997-07-26'),
+(35, 'prova', '1997-07-26');
 
 -- --------------------------------------------------------
 
@@ -82,7 +81,8 @@ CREATE TABLE `coupon` (
 --
 
 INSERT INTO `coupon` (`coupon_id`, `producer_id`, `client_id`, `ammount`) VALUES
-(4, 3, 1, 2.3);
+(1, 32, 30, 1.1),
+(2, 31, 30, 2);
 
 -- --------------------------------------------------------
 
@@ -105,24 +105,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `client_id`, `producer_id`, `state`, `date`, `deliveryPlace`, `description`) VALUES
-(2, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 2 <br/> In consegna presso: Ingresso<br/>'),
-(3, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 2 <br/> product: Panino Albanese qnt: 1 <br/> In consegna presso: Ingresso<br/>'),
-(4, 1, 2, 0, '2018-12-22', '3.7', 'product: Torta della Nonna qnt: 1 <br/> Utilizzato CouponIn consegna presso: 3.7<br/>'),
-(5, 1, 3, 0, '2018-12-22', '3.7', 'product: Birra Albanese qnt: 1 <br/> Utilizzato CouponIn consegna presso: 3.7<br/>'),
-(6, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(7, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(8, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(9, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 1 <br/> In consegna presso: Ingresso'),
-(10, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(11, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 1 <br/> In consegna presso: Ingresso'),
-(12, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(13, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 1 <br/> In consegna presso: Ingresso'),
-(14, 1, 2, 0, '2018-12-22', '3.7', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: 3.7'),
-(15, 1, 3, 0, '2018-12-22', '3.7', 'product: Birra Albanese qnt: 1 <br/> product: Panino Albanese qnt: 1 <br/> In consegna presso: 3.7'),
-(16, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(17, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 1 <br/> In consegna presso: Ingresso'),
-(18, 1, 2, 0, '2018-12-22', 'Ingresso', 'product: Torta della Nonna qnt: 1 <br/> In consegna presso: Ingresso'),
-(19, 1, 3, 0, '2018-12-22', 'Ingresso', 'product: Birra Albanese qnt: 1 <br/> In consegna presso: Ingresso');
+(1, 30, 31, 1, '2019-01-07', '3.7', 'product: Piadina Semplice qnt: 1 <br/> In consegna presso: 3.7'),
+(2, 34, 33, 0, '2019-01-07', 'Biblioteca', 'product: Il cioccolatoso qnt: 1 <br/> In consegna presso: Biblioteca'),
+(3, 34, 32, 0, '2019-01-07', 'Biblioteca', 'product: Cola qnt: 1 <br/> In consegna presso: Biblioteca');
 
 -- --------------------------------------------------------
 
@@ -160,8 +145,9 @@ CREATE TABLE `producer` (
 --
 
 INSERT INTO `producer` (`ID`, `companyName`) VALUES
-(2, 'Latte Divino'),
-(3, 'El kebab albanese');
+(31, 'Malaghiotta'),
+(32, 'La Romagna'),
+(33, 'Pasticceria Creativa');
 
 -- --------------------------------------------------------
 
@@ -185,10 +171,13 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`producer_id`, `product_id`, `productName`, `availability`, `description`, `productPrice`, `category`, `image_path`) VALUES
-(2, 1, 'coca-cola', 1, 'coca-cola merdosa', 2, 1, '/Assets/images/product-image.jpg'),
-(2, 2, 'Torta della Nonna', 1, 'torta della nonna', 5, 4, '/Assets/images/product-image.jpg'),
-(3, 1, 'Birra Albanese', 1, 'birra albanese molto alcolica', 25, 1, '/Assets/images/product-image.jpg'),
-(3, 2, 'Panino Albanese', 1, 'panino con droga', 15, 5, '/Assets/images/product-image.jpg');
+(31, 1, 'Piadina Classica', 1, 'Piadina Classica', 2.4, 5, '/upload/31/slider1.jpg'),
+(31, 2, 'Piadina Semplice', 1, 'Piadina Semplice', 1, 5, '/upload/31/slider2.jpg'),
+(31, 3, 'Acqua Minerale', 1, 'Acqua Minerale', 1, 1, '/upload/31/boarioAcqua.jpg'),
+(32, 1, 'Insalatona', 1, 'Insalata di ingredienti misti', 1.4, 5, '/upload/32/slider2.jpg'),
+(32, 2, 'Cola', 1, 'cola', 1.2, 1, '/upload/32/cola.jpg'),
+(33, 1, 'Il vanigliato', 1, 'Cupcake alla vaniglia', 4.5, 4, '/upload/33/vanigliato.jpg'),
+(33, 2, 'Il cioccolatoso', 1, 'Muffin con gocce di cioccolato', 3.5, 4, '/upload/33/muffin.jpg');
 
 --
 -- Trigger `products`
@@ -225,9 +214,15 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`ID`, `name`, `lastName`, `email`, `username`, `password`, `permission`) VALUES
-(1, 'Cliente', 'Cliente', 'cliente@mail.it', 'cliente', '$2y$10$/UZN.Pbb5Cl5qnKi4LTJ7.BmxZx5BAGtS/2BKjSnUxGip/KdcnvOO', 0),
-(2, 'fornitore', 'fornitore', 'fornitore@mail.it', 'fornitore', '$2y$10$.XaV1zRB9pzKj050DCcUPe3nwDHg7H2QbZZFlo0qlWQcAmz7jSk2u', 1),
-(3, 'fornitore2', 'fornitore2', 'fornitore2@mail.it', 'fornitore2', '$2y$10$2N6AMTEY4aJmgWoqzU8W0upou52R5mGk5nKmoGPNTlwGy3.N6xpgi', 1);
+(30, 'Lucy', 'Zoffoli', 'lucy@hotmail.it', 'lucy', '$2y$10$3ZNaMbYPQV2Id4CMNhQto.yxMzY/sKDW18XiehffQFYWdQJ0703Yi', 0),
+(31, 'marta', 'sanzucchi', 'malagiotta@azienda.it', 'marta', '$2y$10$u3ekf3Hufyv0FHbbI1KdKuckxIFQeA2T3SPJ37JUNWixHaH8.nXaa', 1),
+(32, 'Marco', 'Rossi', 'marcoRossi@gmail.com', 'marco', '$2y$10$a72O/P9Vurz8Sl7mpqvzyejU3TTAgBymx5j0CgDmnZrfBN4EhTDPe', 1),
+(33, 'Nicola', 'Cirillo', 'nicolacirillo@gmail.com', 'ciri', '$2y$10$nGec9rVPsl.b8QV7sQItfuDZcOMA3JvPzKEbYf6SyytlJT.sY0RIS', 1),
+(34, 'Simone', 'Del Gatto', 'sdg97@gmail.com', 'sdg97', '$2y$10$ltTKh8cAbA7m9K66HbvReeoihmHtSyjImpsrL4A3/fRciW.xnjdm.', 0),
+(35, 'prova', 'prova', 'prova@gmail.com', 'prova', '$2y$10$eeKmPlm4gQedbC/a6E2UMe/iHamd4XTwGsW2Q/3nKLWx/Vy2VJ14W', 0),
+(36, 'Simone', 'Del Gatto', 'simonedelgatto1997@gmail.com', 'sdgAdmin', '$2y$10$eeKmPlm4gQedbC/a6E2UMe/iHamd4XTwGsW2Q/3nKLWx/Vy2VJ14W', 2),
+(38, 'Lorenzo', 'Casini', 'lorenzocasini@gmail.com', 'casoAdmin', '$2y$10$eeKmPlm4gQedbC/a6E2UMe/iHamd4XTwGsW2Q/3nKLWx/Vy2VJ14W', 2),
+(39, 'Anis', 'Lico', 'anislico@gmail.com', 'anisAdmin', '$2y$10$eeKmPlm4gQedbC/a6E2UMe/iHamd4XTwGsW2Q/3nKLWx/Vy2VJ14W', 2);
 
 --
 -- Indici per le tabelle scaricate
@@ -297,37 +292,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT per la tabella `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `category_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `client`
 --
 ALTER TABLE `client`
-  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `client_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT per la tabella `coupon`
 --
 ALTER TABLE `coupon`
-  MODIFY `coupon_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `coupon_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT per la tabella `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `order_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `producer`
 --
 ALTER TABLE `producer`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT per la tabella `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Limiti per le tabelle scaricate

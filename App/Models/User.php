@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use PDO;
-use PDOException;
+use \PDOException;
 
 /**
  * Example user model
@@ -23,18 +23,18 @@ class User extends \Core\Model
     {
         $db = static::getDB();
         try {
-            $sql = "SELECT ID,username,password FROM users WHERE username='$user'";
+            $sql = "SELECT ID,username,password,permission FROM users WHERE username='$user'";
             $result = $db->query($sql);
             if ($result->rowCount() > 0) {
                 $row = $result->fetch();
                 $_SESSION['user_id'] = $row['ID'];
                 if (password_verify($pwd, $row['password'])) {
-                    return 0;
+                    return $row['permission'];
                 } else {
-                    return 1;
+                    return 3;
                 }
             } else {
-                return 2;
+                return 4;
             }
         } catch (PDOException $e) {
             die("ERROR: Could not able to execute $sql. " . $e->getMessage());

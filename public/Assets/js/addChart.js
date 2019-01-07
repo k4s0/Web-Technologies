@@ -51,6 +51,15 @@ $(function () {
             $(".media-list").append(newElem);
         });
 
+        console.log(products);
+        if(products.length <= 0){
+            $("#checkOutButton").css("display", "none");
+            console.log("removed");
+        } else {
+            $("#checkOutButton").css("display","initial");
+            console.log("add");
+        }
+
         $("a").on("click", ".fa-trash-alt", function (ev) {
             var elem = $(ev.target).parentsUntil("ul");
             var name = elem.find("h6.name").text();

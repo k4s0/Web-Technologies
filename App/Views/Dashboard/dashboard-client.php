@@ -55,19 +55,20 @@
 =================================================-->
 
 <div class="container" id="bt-client">
+
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <button id="showOrder" style="width: 100%" class="btn btn-info " role="button">
+            <a  id="showOrder"  class="btn btn-primary btn-lg clientButton" type="button">
                 Visualizza Ordini
-            </button>
+            </a>
         </div>
         <div class="col-xs-2"></div>
     </div>
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <a href="/Dashboard/modifyDataUser" style="margin-bottom: 100px; margin-top: 10%; width:100%" class="btn btn-primary btn-lg" type="button">
+            <a href="/Dashboard/modifyDataUser"  class="btn btn-primary btn-lg clientButton" type="button">
                 Modifica Dati
             </a>
         </div>

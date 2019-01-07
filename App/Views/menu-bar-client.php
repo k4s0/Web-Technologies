@@ -31,7 +31,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
-                <li class="active"><a href="/Home/Index">HOME</a></li>
+                <li><a href="/Home/Index">HOME</a></li>
                 <li><a href="/Shop/index">NEGOZIO</a></li>
                 <li class="cart dropdown">
                     <a href="#">
@@ -44,7 +44,7 @@
                         <ul class="media-list">
 
                         </ul>
-                        <a href="/Shop/checkout"><button  class="btn btn-primary btn-sm">Checkout</button></a>
+                        <a id="checkOutButton" href="/Shop/checkout"><button  class="btn btn-primary btn-sm">Checkout</button></a>
                     </div>
                 </li>
                 <li class="dropdown">

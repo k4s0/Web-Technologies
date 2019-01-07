@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div align="center" class="col-md-8">
-            <h2>CATEGORIE PRODOTTI</h2>
+            <h2 class="modify-data">CATEGORIE PRODOTTI</h2>
         </div>
         <div class="col-md-2"></div>
     </div>
@@ -49,7 +49,7 @@
                 <thead>
                 <tr>
                     <th>Categoria</th>
-                    <th>Elimina</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody id="table">
@@ -82,9 +82,61 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="align-items-center col-xs-8">
-            <td><button type="button" class="btn btn-success" id="addCategory">Aggiungi Categoria</button>
+            <td><button type="button" class="btn btn-primary adminButton" id="addCategory">Aggiungi Categoria</button>
         </div>
         <div class="col-xs-2"></div>
     </div>
 
+
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div align="center" class="col-md-8">
+            <h2 class="modify-data">LUOGHI DI CONSEGNA</h2>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <table id="categoryTable" class="table table-hover" id="tableCheckout">
+                <thead>
+                <tr>
+                    <th>Luogo</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody id="table">
+
+                <?php
+                if(isset($places)){
+                    foreach ($places as $p) {
+                        echo '
+                <tr>
+                    <td>'.$p['place_id'].'</td>
+                    <td><button type="button" class="btn btn-danger deletePlace">Elimina</button>
+                    <input type="hidden" class="place_id" value="'.$p['place_id'].'"></td>
+                </tr>';
+                    }
+                }
+                ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <input type="text" class="form-control" id="place_name_input"/>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="align-items-center col-xs-8">
+            <td><button type="button" class="btn btn-primary adminButton " id="addPlace">Aggiungi Luogo di Consegna</button>
+        </div>
+        <div class="col-xs-2"></div>
+    </div>
 </div>

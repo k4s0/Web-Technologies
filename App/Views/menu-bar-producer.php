@@ -31,7 +31,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav nav-main">
-                <li class="active"><a href="/Home/Index">HOME</a></li>
+                <li><a href="/Home/Index">HOME</a></li>
                 <li class="dropdown">
                     <a href="#">
                         <i class="fa fa-user"></i>

@@ -1,9 +1,9 @@
 $(function(){
     var yourNavigation = $(".navbar");
     stickyDiv = "sticky";
-    yourHeader = $("header").height();
+    yourHeader = $("header").height()+250;
     $(window).scroll(function () {
-        console.log($(this).scrollTop());
+        console.log($(document).height());
         if ($(this).scrollTop() > yourHeader) {
             yourNavigation.addClass("sticky");
         } else {

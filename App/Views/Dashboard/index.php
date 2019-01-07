@@ -17,5 +17,6 @@ if ($code == 0) {
 <?php include '../App/Views/footer.php'; ?>
 <script src="/Assets/js/ajax.js"></script>
 <script src="/Assets/js/categories-manager.js" type="text/javascript"></script>
+<script src="/Assets/js/places-manager.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 $(function () {
-    $("#del").click(function () {
+    $(".del").click(function () {
         var value = $(this).val();
         $.ajax({
             type: 'POST',
@@ -12,6 +12,5 @@ $(function () {
             }
         });
     });
-
 
 })

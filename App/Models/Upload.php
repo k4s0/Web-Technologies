@@ -17,16 +17,16 @@ class Upload extends \Core\Model
         if (in_array($filetype, $allowed)) {
             // Check whether file exists before uploading it
             if (file_exists("upload/" . $user . "/" . $file)) {
-                echo $file . " gia' presente.";
+                echo "Log:".$file . " gia' presente.";
             } else {
-                if (!mkdir("upload/" . $user, 777, true)) {
-                    echo('Impossibile creare cartella.');
+                if(!file_exists("upload/".$user."/")){
+                    mkdir("upload/".$user,777,true);
                 }
                 if (move_uploaded_file($file_tmp, "upload/" . $user . "/" . $file)) {
-                    echo "La tua foto è stata caricata con successo.";
+                    echo "Log: La tua foto è stata caricata con successo.";
 
                 } else {
-                    echo "errore spostamento cartella";
+                    echo "Errore spostamento cartella";
                 }
 
             }

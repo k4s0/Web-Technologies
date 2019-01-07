@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <p align="center" class="copyright-text ">Food Fighters @2018 Designed by Anis,Simone,Lorenzo | All
+                <p align="center" class="copyright-text ">Food Fighters @2019 Designed by Anis,Simone,Lorenzo | All
                     Rights Reserved</p>
             </div>
         </div>

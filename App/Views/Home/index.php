@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" xmlns="http://www.w3.org/1999/html">
 <head>
     <title>Home</title>
     <?php include '../App/Views/head.php'; ?>
@@ -103,10 +103,34 @@ if (isset($_SESSION['user'])) {
     </div>
 </section>
 
+<!--Mission -->
+<section>
+    <div class="container" style="background-color: lightgrey; border-radius: 40% 0% 40% 0%">
+        <div class="row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8"><div class="block-heading">
+                    <h2>MISSION</h2>
+                </div></div>
+            <div class="col-xs-2"></div>
+        </div>
+        <div class="row" align="center">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8" style="font-size: 18px;">
+                <p><span style="color:#df3039;">Food Fighters</span> non è un servizio ma una necessità.</br> La necessita di centinaia di studenti che si trovano a dover affrontare dopo intense ore di studio il nemico più terribile:<dt>LA FAME.</dt>
+                    E' l'opportunità decisiva per decine di attivtà di ristorazione che vogliono investire nella risorsa più importante di questa città:</br><dt>I RAGAZZI DEL CAMPUS.</dt>L'ora di pranzo universitaria è una lotta e c'è solo un'arma per combatterla
+                <dt style="color:#df3039;"></br>Food Fighters.</dt>
+                </p>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>
+    </div>
+</section>
+
+
 <!-- CATAGORIE Start
     ================================================== -->
 
-<section style="padding-bottom: 200px" id="catagorie">
+<section id="catagorie">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -117,37 +141,35 @@ if (isset($_SESSION['user'])) {
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <a class="catagotie-head">
+                                <a href="/Shop/index" class="catagotie-head">
                                     <img src="/Assets/images/prodotti/filetto.jpg" alt="...">
                                     <h3>Filetto di Manzo con Patatine</h3>
                                 </a>
                                 <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a
-                                        expedita aperiam...</p>
+                                    <br>-Filetto di Manzo scelto</br>-Patate BIO
+                                    </p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <a class="catagotie-head">
+                                <a href="/Shop/index" class="catagotie-head">
                                     <img src="/Assets/images/prodotti/sugo.jpg" alt="...">
                                     <h3>Pasta al sugo con olive nere</h3>
                                 </a>
                                 <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a
-                                        expedita aperiam...</p>
+                                    <br>-Pasta integrale</br>-Passata con pomodoro DOP</br>-Olive nere pugliesi</p>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="thumbnail">
-                                <a class="catagotie-head">
+                                <a href="/Shop/index" class="catagotie-head">
                                     <img style="height: 220px" src="/Assets/images/prodotti/insalata.jpg" alt="...">
-                                    <h3>Insalate con pollo croccante</h3>
+                                    <h3>Insalata con pollo croccante</h3>
                                 </a>
                                 <div class="caption">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste, aut, esse, laborum placeat id illo a
-                                        expedita aperiam...</p>
+                                    <p>-Insalata a Km 0</br>-Pollo ruspante allevato a terra</p>
                                 </div>
                             </div>
                         </div>

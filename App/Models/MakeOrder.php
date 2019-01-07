@@ -58,7 +58,7 @@ class MakeOrder extends \Core\Model
         }
 
         if($isCouponUsed === true){
-            $string = $string . 'Utilizzato CouponManager <br/>';
+            $string = $string . 'Utilizzato Coupon<br/>';
         }
         $string = $string . 'In consegna presso: ' . $selectedPlace ;
         return $string;

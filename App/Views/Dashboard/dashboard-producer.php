@@ -58,7 +58,7 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <button id="showProducerOrder" class="btn btn-primary btn-lg">
+            <button id="showProducerOrder" class="btn btn-primary btn-lg producerButton">
                 Visualizza Ordini
             </button>
         </div>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <a href="/Dashboard/modifyDataUser" class="btn btn-primary btn-lg" type="button">
+            <a href="/Dashboard/modifyDataUser" class="btn btn-primary btn-lg producerButton" type="button">
                 Modifica Dati
             </a>
         </div>
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <a href="/Dashboard/showProduct" class="btn btn-primary btn-lg" type="button">
+            <a href="/Dashboard/showProduct" class="btn btn-primary btn-lg producerButton" type="button">
                 Aggiungi Prodotto
             </a>
         </div>
@@ -85,7 +85,7 @@
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8">
-            <a href="/Dashboard/releaseCoupon" class="btn btn-primary btn-lg" type="button">
+            <a href="/Dashboard/releaseCoupon" class="btn btn-primary btn-lg producerButton" type="button">
                 Rilascia Coupon
             </a>
         </div>

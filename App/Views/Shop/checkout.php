@@ -8,7 +8,7 @@
 <?php include '../App/Views/menu-bar-client-home.php' ?>
 
 
-<div class="container">
+<div class="container" id="tableProduct">
     <div class="row">
         <div class="col-xs-2"></div>
         <div class="col-xs-8"></div>
@@ -30,19 +30,45 @@
             <?php
             foreach ($products as $p){
                 echo '
-                <tr>
-                    <td><img class="checkoutIMG" src="'. $p[4] .'" alt=""></td>
-                    <td>'. $p[0] .'</td>
-                    <td>'. $p[6] .'</td>
-                    <td>'. $p[3] .'</td>
-                    <td>'. $p[2] .'</td>
-                </tr>';
+                <div>
+                    <tr>
+                        <td><img class="checkoutIMG" src="'. $p[4] .'" alt="immagine prodotto"></td>
+                        <td>'. $p[0] .'</td>
+                        <td>'. $p[6] .'</td>
+                        <td>'. $p[3] .'</td>
+                        <td>'. $p[2] .'</td>
+                    </tr>
+                </div>';
             }
             ?>
             </tbody>
         </table>
     </div>
 </div>
+<div class="container" id="listProduct">
+<?php
+foreach ($products as $p){
+    echo '<div class="row listProductItem">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-8">
+                <div class="card">
+                    <img class="checkoutIMG" src="'. $p[4] .'" alt="immagine prodotto">
+                <div class="card-body">
+                    <h5 class="card-title">'.$p[0].'</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">'.$p[6].'</h6>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><span class="productInfo">Price: </span> '.$p[3].'€</li>
+                        <li class="list-group-item"><span class="productInfo">Quantità: </span> '. $p[2] .'</li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="col-xs-2"></div>
+        </div>';
+}
+?>
+</div>
+
 
 
 <div class="container">
@@ -75,6 +101,7 @@
 
     <div class="row">
         <div class="col-md-2" style="padding-bottom: 100px">
+            <h7 class="modify-data">Luogo di consegna:</h7>
             <select id="placeSelectMenu"  class="form-control">
                 <?php
                 echo '<option selected>'.'Ingresso'.'</option>';
@@ -87,7 +114,6 @@
             </select>
         </div>
         <div class="col-md-8">
-
         </div>
         <div class="col-md-2">
 

@@ -5,6 +5,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: 300;
+    height: 100%;
 }
 
 li {
@@ -22,7 +23,7 @@ a:active {
 /*Headers*/
 h1, h2, h3, h4, h5, h6, h7 {
     font-family: 'Staatliches', cursive, sans-serif;
-    color: lightcoral
+    color: #DF3039;
 }
 
 h1 {
@@ -73,7 +74,7 @@ section + section {
 .block-heading h2 {
     background: #fff;
     display: inline-block;
-    color: #000;
+    color: #DF3039;
     margin-top: -28px;
     padding: 5px 30px 10px 30px;
     border: 1px solid #dedede;
@@ -99,7 +100,7 @@ section + section {
 /*------------- Top bar----------------*/
 #top {
     width: 100%;
-    background: #DF303A;
+    background: #DF3039;
     font-size: 12px;
     color: #fff;
     padding: 5px 0;
@@ -186,7 +187,7 @@ a .logo {
 }
 
 .cart .dropdown-menu h6 span {
-    color: #DF303A;
+    color: #DF3039;
 }
 
 .cart .dropdown-menu button {
@@ -198,7 +199,7 @@ a .logo {
     ==================================================*/
 
 .login-label {
-    color: black;
+    color: #940209;
 }
 
 
@@ -234,7 +235,7 @@ a .logo {
     left: 0;
     width: 100%;
     height: 2px;
-    background: #DF303A;
+    background: #DF3039;
     content: '';
     opacity: 0;
     -webkit-transition: opacity 0.3s,
@@ -289,8 +290,8 @@ a .logo {
 }
 
 .navbar-nav .active {
-    border-top: 2px solid #DF303A;
-    border-bottom: 2px solid #DF303A;
+    border-top: 2px solid #DF3039;
+    border-bottom: 2px solid #DF3039;
     margin: -1px 0;
 }
 
@@ -300,7 +301,7 @@ a .logo {
 
 .nav-main .dropdown-menu li a:hover {
     color: #fff;
-    background: #DF303A;
+    background: #DF3039;
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -391,7 +392,7 @@ a .logo {
 
 
 #features .block {
-    background: #DF303A;
+    background: #DF3039;
     color: #fff;
     padding: 4px;
 }
@@ -444,7 +445,7 @@ a .logo {
 }
 
 #catagorie .block .thumbnail:hover h3 {
-    color: #DF303A;
+    color: #DF3039;
 }
 
 #catagorie .block .thumbnail a h3 {
@@ -485,7 +486,7 @@ a .logo {
 
 .products-heading h2 {
     margin: 0px 0 20px;
-    border-top: 5px solid #DF303A;
+    border-top: 5px solid #DF3039;
     display: inline-block;
 }
 
@@ -507,11 +508,11 @@ a .logo {
 
 .products:hover a img {
     opacity: 0.7;
-    border: 1px solid #DF303A;
+    border: 1px solid #DF3039;
 }
 
 .products:hover h4 {
-    color: #DF303A;
+    color: #DF3039;
 }
 
 .products a h4 {
@@ -524,7 +525,7 @@ a .logo {
 }
 
 .products a h4:hover {
-    color: #DF303A;
+    color: #DF3039;
 }
 
 #products + section {
@@ -543,7 +544,7 @@ a .logo {
 }
 
 .view-link:hover {
-    border: 1px solid #DF303A;
+    border: 1px solid #DF3039;
 }
 
 .view-link:hover i {
@@ -562,7 +563,7 @@ a .logo {
 
 .price {
     font-size: 22px;
-    color: #DF303A;
+    color: #DF3039;
     font-weight: bold;
     margin-bottom: 8px;
 }
@@ -576,6 +577,7 @@ a .logo {
     ==================================================*/
 
 footer {
+    margin-top: 200px;
     background: #383838;
     color: #fff;
     padding-top: 40px;
@@ -600,7 +602,7 @@ footer .block {
 }
 
 .copyright-text a {
-    color: #DF303A;
+    color: #DF3039;
 }
 
 .copyright-text a:hover {
@@ -640,7 +642,7 @@ footer .block {
 
 .shutter:hover:before {
     height: 100%;
-    background: #DF303A;
+    background: #DF3039;
     color: #fff;
 }
 
@@ -712,8 +714,8 @@ footer .block {
 }
 
 .pagination-bottom .pagination .active a {
-    background: #DF303A;
-    border: 1px solid #DF303A;
+    background: #DF3039;
+    border: 1px solid #DF3039;
     color: #fff;
 }
 
@@ -738,8 +740,34 @@ footer .block {
     margin-left: 10px;
     padding: 8px;
     margin-right: 10px;
-    vertical-align: middle
+    vertical-align: middle;
 }
+/****** used for the checkout list  ***********/
+
+.listProductItem{
+    margin-bottom: 2px;
+}
+.productInfo{
+    font-weight: bold;
+}
+
+@media screen and (max-width: 699px){
+    #tableProduct{
+        display: none;
+    }
+    #prod_producer_table{
+        display: none
+    }
+}
+@media screen and (min-width: 700px){
+    #listProduct{
+        display: none;
+    }
+    #prod_producer_card{
+        display: none;
+    }
+}
+
 
 /**use for range slider**/
 .slider {
@@ -777,3 +805,34 @@ footer .block {
     height: 100px;
 }
 
+/**button*/
+.producerButton, .clientButton, .adminButton{
+    width: 100%;
+    margin: 2% 0% 0% 0%;
+}
+
+/***card***/
+.card{
+    border-radius: 5%;
+    background-color: lightgrey;
+    margin: 2%;
+
+}
+.btn-primary,.btn-default,#addProduct{
+    color: #FFFFFF;
+    background-color: #1e9b83;
+    border-color: #015d56;
+    margin-top: 20px;
+}
+.btn-primary:hover,.btn-default:hover,#addProduct:hover{
+    background-color: #369891;
+}
+.modify-data{
+    color: #015d56;
+}
+.back-to-dash{
+    margin-top: 50px;
+}
+.login-create{
+    color: #f3575f;
+}

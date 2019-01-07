@@ -14,10 +14,10 @@
                         <div class="col-md-6">
                             <form action="/Login/index" method="post">
                                 <input type="hidden" name="login-code" value="0">
-                                <h3>Crea il tuo account</h3>
+                                <h3 class="login-create">Crea il tuo account</h3>
                                 <div class="form_content">
                                     <p class="submit">
-                                        <button class="btn btn-primary">Crea Account</button>
+                                        <button class="btn btn-primary shutter">Crea Account</button>
                                     </p>
                                 </div>
 
@@ -26,7 +26,7 @@
                         <div class="col-md-6">
                             <form action="/Dashboard/index" method="post">
                                 <input type="hidden" name="code" value="0">
-                                <h3>Già registrato?</h3>
+                                <h3 class="login-create">Già registrato?</h3>
                                 <div class="form-group">
                                     <label class="login-label" for="username">Username:</label>
                                     <input type="text" name="username" class="form-control" required>
@@ -35,10 +35,6 @@
                                     <label class="login-label" for="pwd">Password:</label>
                                     <input type="password" name="pwd" class="form-control" required>
                                 </div>
-                                <p class="lost_password">
-                                    <a href="#popab-password-reset" class="popab-password-link">Password
-                                        dimenticata?</a>
-                                </p>
                                 <button type="submit" class="btn btn-default">Login</button>
                             </form>
                         </div>
@@ -91,10 +87,6 @@
                                     <label class="login-label" for="pwd">Password:</label>
                                     <input type="password" name="pwd" class="form-control" required>
                                 </div>
-                                <p class="lost_password">
-                                    <a href="#popab-password-reset" class="popab-password-link">Password
-                                        dimenticata?</a>
-                                </p>
                                 <button type="submit" class="btn btn-default">Login</button>
 
                             </form>
@@ -123,8 +115,10 @@
             </div>
             <div class="modal-body">
                 <div class="container">
+
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-xs-2"></div>
+                        <div class="col-xs-8">
                             <form action="/Dashboard/index" method="post">
                                 <input type="hidden" name="code" value="2">
                                 <div class="form-group">
@@ -135,13 +129,11 @@
                                     <label class="login-label" for="pwd">Password:</label>
                                     <input type="password" name="pwd" class="form-control" required>
                                 </div>
-                                <p class="lost_password">
-                                    <a href="#popab-password-reset" class="popab-password-link">Password
-                                        dimenticata?</a>
-                                </p>
+
                                 <button type="submit" class="btn btn-default">Login</button>
                             </form>
                         </div>
+                        <div class="col-xs-2"></div>
                     </div>
                 </div>
 

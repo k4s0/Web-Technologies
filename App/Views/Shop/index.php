@@ -14,8 +14,14 @@ if(isset($_SESSION['user'])){
 }
 
 ?>
+<div class="container">
+    <div class="row" align="center" style="margin-bottom: 20px;">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8"><h1>Negozio</h1></div>
+        <div class="col-xs-2"></div>
+    </div>
+</div>
 
-<h1>Negozio</h1>
 
 
 <section id="products">
